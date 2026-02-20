@@ -1,0 +1,88 @@
+/* src/css/AdminUsersPage.css */
+
+.admin {
+  min-height: 100vh;
+  padding: 40px 16px;
+  background: #050816;
+  color: #f9fafb;
+}
+
+.admin__container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.admin__header {
+  margin-bottom: 20px;
+}
+
+.admin__title {
+  font-size: 28px;
+  margin: 0 0 4px;
+}
+
+.admin__subtitle {
+  margin: 0;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.admin__msg {
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.admin__msg--error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #fecaca;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.admin__msg--empty {
+  background: rgba(148, 163, 184, 0.08);
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.admin__tableWrapper {
+  margin-top: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.admin__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.admin__table thead {
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.admin__table th,
+.admin__table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+}
+
+.admin__row:nth-child(even) {
+  background: rgba(15, 23, 42, 0.75);
+}
+
+.admin__row:hover {
+  background: rgba(55, 65, 81, 0.8);
+}
+
+.admin__cell--id {
+  font-family: monospace;
+  font-size: 12px;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

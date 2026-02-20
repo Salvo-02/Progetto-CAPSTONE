@@ -1,0 +1,61 @@
+.lib-container {
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+.lib-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.lib-error {
+  background: rgba(255, 70, 70, 0.2);
+  border: 1px solid rgba(255, 70, 70, 0.4);
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.lib-loading,
+.lib-empty {
+  color: rgba(255, 255, 255, 0.6);
+  padding: 20px 0;
+}
+
+.lib-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.lib-table th,
+.lib-table td {
+  padding: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+}
+
+.lib-table tr:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.lib-btn {
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #fff;
+}
+
+.lib-btn--primary {
+  background: #ff7b00;
+}
+
+.lib-btn--danger {
+  background: #e63b3b;
+}

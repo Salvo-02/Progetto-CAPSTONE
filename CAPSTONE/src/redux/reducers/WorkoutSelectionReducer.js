@@ -16,10 +16,10 @@ import {
 
 const initialState = {
   currentWorkoutId: null,
-  workoutStatus: null, // "Draft" | "Completed" | "Archived"
+  workoutStatus: null,
   notes: "",
-  selectedMuscleGroup: null, // gruppo muscolare scelto
-  // ogni blocco: { exerciseId, sets: [ { reps, weight } ] }
+  selectedMuscleGroup: null,
+
   exerciseBlocks: [],
 };
 
@@ -31,7 +31,6 @@ export default function WorkoutSelectionReducer(state = initialState, action) {
       };
 
     case RESET_PICKER:
-      // quando entro in MuscleGroupPage voglio solo resettare il gruppo selezionato
       return {
         ...state,
         selectedMuscleGroup: null,
@@ -69,7 +68,7 @@ export default function WorkoutSelectionReducer(state = initialState, action) {
 
     case ADD_EXERCISE_BLOCK: {
       const { exerciseId } = action.payload;
-      // se esiste già non lo duplico
+
       if (state.exerciseBlocks.some((b) => b.exerciseId === exerciseId)) {
         return state;
       }

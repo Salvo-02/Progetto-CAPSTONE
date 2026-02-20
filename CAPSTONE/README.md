@@ -1,16 +1,17 @@
-# React + Vite
+Fantasy Gym è una piattaforma web realizzata in React + Redux con backend in ASP.NET Core + Identity, progettata per offrire un’esperienza semplice, veloce e professionale nella gestione dei workout.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Gli utenti possono:
 
-Currently, two official plugins are available:
+1-registrarsi ed effettuare il login tramite JWT
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2-creare nuovi workout e salvarli come Draft, Completed o Archived
 
-## React Compiler
+3-aggiungere esercizi organizzati per gruppo muscolare
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+4-modificare set, ripetizioni, note e pesi in modo immediato
 
-## Expanding the ESLint configuration
+5-visualizzare la libreria personale degli allenamenti
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+6-modificare o eliminare workout già salvati
+
+https://github.com/Salvo-02/Api-Gym.git

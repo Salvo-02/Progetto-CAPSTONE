@@ -274,8 +274,6 @@ body {
   }
 }
 
-/* Login page base, reusa il pattern della RegisterPage */
-
 .gym-login-page {
   position: relative;
   min-height: 100vh;
@@ -417,8 +415,6 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(255, 60, 0, 0.5);
 }
-
-/* Responsive */
 
 @media (max-width: 992px) {
   .gym-login-container {

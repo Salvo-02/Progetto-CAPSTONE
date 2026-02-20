@@ -1,5 +1,3 @@
-// src/pages/PickExercisePage.jsx
-
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchExercises } from "../redux/action/ExerciseAction";

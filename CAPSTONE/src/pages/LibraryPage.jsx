@@ -1,5 +1,3 @@
-// src/pages/LibraryPage.jsx
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { apiFetch } from "../utils/api";
@@ -29,7 +27,6 @@ export default function LibraryPage() {
     load();
   }, []);
 
-  // DRAFT → Continua su /workouts/new
   const onContinueDraft = (workout, e) => {
     e.stopPropagation();
     navigate("/workouts/new", {
@@ -37,7 +34,6 @@ export default function LibraryPage() {
     });
   };
 
-  // COMPLETED → Modifica su /workouts/new
   const handleEdit = (workout, e) => {
     e.stopPropagation();
     navigate("/workouts/new", {
@@ -45,7 +41,6 @@ export default function LibraryPage() {
     });
   };
 
-  // click sulla riga → pagina dettaglio sola lettura
   const handleRowClick = (id) => {
     navigate(`/workouts/${id}`);
   };
@@ -121,7 +116,6 @@ export default function LibraryPage() {
                           </>
                         )}
 
-                        {/* COMPLETED → Matita (edit) + Cestino */}
                         {status === "Completed" && (
                           <>
                             <button type="button" className="lib__iconBtn lib__iconBtn--edit" onClick={(e) => handleEdit(w, e)} title="Modifica workout">
@@ -133,7 +127,6 @@ export default function LibraryPage() {
                           </>
                         )}
 
-                        {/* ARCHIVED → Solo Cestino */}
                         {status === "Archived" && (
                           <button type="button" className="lib__iconBtn lib__iconBtn--danger" onClick={(e) => handleDelete(w.id, e)} title="Elimina workout">
                             🗑

@@ -97,10 +97,8 @@ export const submitLogin = () => {
         try {
           const decoded = jwtDecode(token);
 
-          // FullName -> ClaimTypes.GivenName => "given_name"
           fullNameFromJwt = decoded?.given_name || decoded?.fullName || null;
 
-          // Ruolo: usi sia "role" custom che il claim standard
           roleFromJwt = decoded?.role || decoded?.["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || null;
         } catch (e) {
           console.error("JWT decode error:", e);

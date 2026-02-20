@@ -1,5 +1,3 @@
-// src/pages/WorkoutCreatePage.jsx
-
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -26,7 +24,6 @@ const WORKOUT_SETS_LIST = (workoutId) => `/api/workouts/${workoutId}/sets`; // G
 const WORKOUT_SETS = (workoutId) => `/api/workouts/${workoutId}/sets`; // POST
 const WORKOUT_SET_BY_ID = (workoutId, setId) => `/api/workouts/${workoutId}/sets/${setId}`; // DELETE
 
-// trasformare i set del backend in exerciseBlocks
 function buildBlocksFromSets(sets) {
   const byExercise = new Map();
 
@@ -78,7 +75,6 @@ export default function WorkoutCreatePage() {
   const canEdit = workoutStatus !== "Archived";
   const exName = (id) => exercises?.find((e) => e.id === id)?.name ?? id;
 
-  // Se arrivo da /workouts/new con workoutId (da libreria), carico dal backend
   useEffect(() => {
     const fromStateId = location.state && location.state.workoutId;
     if (!fromStateId) return;
@@ -94,7 +90,6 @@ export default function WorkoutCreatePage() {
       setErr("");
 
       try {
-        // Dati base workout
         const w = await apiFetch(`/api/Workout/${fromStateId}`, {
           method: "GET",
         });
@@ -114,7 +109,6 @@ export default function WorkoutCreatePage() {
           }
         }
 
-        // Set
         const sets = await apiFetch(WORKOUT_SETS_LIST(fromStateId), {
           method: "GET",
         });
@@ -141,16 +135,11 @@ export default function WorkoutCreatePage() {
     };
   }, [location.state, currentWorkoutId, exerciseBlocks.length, dispatch]);
 
-  // se ho già blocchi ma nessuno status, imposto Draft
   useEffect(() => {
     if (!workoutStatus && exerciseBlocks.length > 0) {
       dispatch(setWorkoutStatus("Draft"));
     }
   }, [workoutStatus, exerciseBlocks.length, dispatch]);
-
-  // 🔴 NIENTE più auto-reset qui: era quello che impediva l'avvio del workout
-
-  // ---------------- SALVATAGGIO ----------------
 
   const saveWorkoutAndExit = async (forcedStatus) => {
     if (exerciseBlocks.length === 0) {
@@ -158,7 +147,6 @@ export default function WorkoutCreatePage() {
       return;
     }
 
-    // validazione set
     for (const block of exerciseBlocks) {
       for (const s of block.sets) {
         const repsNum = Number(s.reps);
@@ -181,7 +169,6 @@ export default function WorkoutCreatePage() {
       const isoDate = new Date(date).toISOString();
       const notesPayload = notes?.trim() ? notes.trim() : null;
 
-      // 1) CREA O AGGIORNA IL WORKOUT (DATE + NOTES)
       if (!workoutId) {
         const created = await apiFetch(WORKOUT_CREATE, {
           method: "POST",
@@ -203,7 +190,6 @@ export default function WorkoutCreatePage() {
         });
       }
 
-      // 2) SINCRONIZZA I SET
       if (!isNewWorkout) {
         const existingSets = await apiFetch(WORKOUT_SETS_LIST(workoutId), {
           method: "GET",
@@ -235,7 +221,6 @@ export default function WorkoutCreatePage() {
         }
       }
 
-      // 3) STATO FINALE → PATCH solo se non è Draft
       if (finalStatus !== "Draft") {
         await apiFetch(WORKOUT_STATUS(workoutId), {
           method: "PATCH",
@@ -244,7 +229,6 @@ export default function WorkoutCreatePage() {
       }
       dispatch(setWorkoutStatus(finalStatus));
 
-      // 4) RIPULISCO E ESCO
       dispatch(resetWorkoutSelection());
       setDate(new Date().toISOString().slice(0, 10));
       dispatch(setWorkoutNotes(""));
@@ -256,8 +240,6 @@ export default function WorkoutCreatePage() {
       setBusy(false);
     }
   };
-
-  // ---------------- UI ACTIONS ----------------
 
   const onStartWorkout = () => {
     if (!workoutStatus) {
@@ -289,7 +271,6 @@ export default function WorkoutCreatePage() {
     dispatch(setWorkoutStatus("Completed"));
   };
 
-  // ARCHIVIA: salva + chiudi con stato "Archived"
   const onConfirmArchive = async () => {
     setShowArchive(false);
     await saveWorkoutAndExit("Archived");
@@ -305,8 +286,6 @@ export default function WorkoutCreatePage() {
 
   const hasActiveWorkout = !!currentWorkoutId || exerciseBlocks.length > 0 || !!workoutStatus;
 
-  // ---------------- RENDER ----------------
-
   return (
     <div className="cw">
       <div className="cw__bg" />
@@ -318,7 +297,6 @@ export default function WorkoutCreatePage() {
           </p>
         </div>
 
-        {/* CARD INFO BASE */}
         <div className="cw__card" style={{ marginBottom: 14 }}>
           <div className="cw__topGrid">
             <div className="cw__field">
@@ -343,7 +321,6 @@ export default function WorkoutCreatePage() {
           {err && <div className="cw__err cw__err--global">{err}</div>}
         </div>
 
-        {/* CARD ESERCIZI / SET */}
         {hasActiveWorkout && (
           <div className="cw__card">
             <div className="cw__setsHead">
@@ -456,7 +433,6 @@ export default function WorkoutCreatePage() {
           </div>
         )}
 
-        {/* MODALE COMPLETA */}
         {showComplete && (
           <div className="cw__modalOverlay" role="dialog" aria-modal="true">
             <div className="cw__modal">
@@ -476,7 +452,6 @@ export default function WorkoutCreatePage() {
           </div>
         )}
 
-        {/* MODALE ARCHIVIA */}
         {showArchive && (
           <div className="cw__modalOverlay" role="dialog" aria-modal="true">
             <div className="cw__modal">

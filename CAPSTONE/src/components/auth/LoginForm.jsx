@@ -14,7 +14,6 @@ const LoginForm = ({ errors, loading }) => {
 
   const { isAuthenticated } = useSelector((state) => state.auth);
 
-  // ✅ redirect dopo login OK
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/", { replace: true });
@@ -33,11 +32,9 @@ const LoginForm = ({ errors, loading }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // ✅ aggiorno redux form (se la tua validazione usa state.auth.form)
     dispatch(updateLoginField("email", form.email));
     dispatch(updateLoginField("password", form.password));
 
-    // ✅ login async
     dispatch(submitLogin());
   };
 

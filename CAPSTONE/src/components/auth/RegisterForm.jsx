@@ -10,7 +10,7 @@ const initialState = {
 
 const RegisterForm = () => {
   const [form, setForm] = useState(initialState);
-  const [errors, setErrors] = useState({});
+  const [setErrors] = useState({});
   const [globalError, setGlobalError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);

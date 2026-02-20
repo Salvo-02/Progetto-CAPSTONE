@@ -1,4 +1,3 @@
-// src/pages/ProfilePage.jsx
 import { useEffect, useState, useMemo } from "react";
 
 import "../css/ProfilePage.css";

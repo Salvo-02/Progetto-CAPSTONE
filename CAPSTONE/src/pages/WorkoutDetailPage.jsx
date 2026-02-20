@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { apiFetch } from "../utils/api";
-import "../css/WorkoutCreatePage.css"; // riuso gli stili cw__...
+import "../css/WorkoutCreatePage.css";
 
 const mapStatus = (status) => {
   if (typeof status === "number") {
@@ -27,7 +27,7 @@ const formatDate = (value) => {
 };
 
 export default function WorkoutDetailPage() {
-  const { id } = useParams(); // id del workout nella URL
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [workout, setWorkout] = useState(null);
@@ -41,12 +41,8 @@ export default function WorkoutDetailPage() {
         setLoading(true);
         setErr("");
 
-        // 1️⃣ Workout base
-        // /api/Workout/{id}
         const w = await apiFetch(`/api/Workout/${id}`);
 
-        // 2️⃣ Set del workout
-        // /api/workouts/{workoutId}/sets  (come da swagger)
         const s = await apiFetch(`/api/workouts/${id}/sets`);
 
         setWorkout(w);
@@ -88,7 +84,6 @@ export default function WorkoutDetailPage() {
     );
   }
 
-  // supporto camelCase e PascalCase
   const date = workout.date ?? workout.Date;
   const notes = workout.notes ?? workout.Notes;
   const status = workout.status ?? workout.Status;
@@ -97,7 +92,6 @@ export default function WorkoutDetailPage() {
     <div className="cw">
       <div className="cw__bg" />
       <div className="cw__container">
-        {/* HEADER */}
         <div className="cw__head">
           <h1 className="cw__title">Dettaglio workout</h1>
           <p className="cw__subtitle">
@@ -106,7 +100,6 @@ export default function WorkoutDetailPage() {
         </div>
 
         <div className="cw__card">
-          {/* Bottoni navigazione */}
           <div
             style={{
               display: "flex",
@@ -123,13 +116,11 @@ export default function WorkoutDetailPage() {
             </button>
           </div>
 
-          {/* NOTE */}
           <div className="cw__field" style={{ marginBottom: 18 }}>
             <label className="cw__label">Info allenamento</label>
             <div className="cw__miniList">{notes ? <div className="cw__muted">{notes}</div> : <div className="cw__muted">Nessuna nota.</div>}</div>
           </div>
 
-          {/* SET / ESERCIZI */}
           <div className="cw__field">
             <label className="cw__label">Esercizi e set</label>
 

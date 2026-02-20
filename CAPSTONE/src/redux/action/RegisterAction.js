@@ -1,4 +1,3 @@
-// src/redux/actions/registerActions.js
 import {
   REGISTER_UPDATE_FIELD,
   REGISTER_SET_ERRORS,
@@ -10,13 +9,11 @@ import {
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
-// aggiorna singolo campo
 export const updateRegisterField = (field, value) => ({
   type: REGISTER_UPDATE_FIELD,
   payload: { field, value },
 });
 
-// errori
 export const setRegisterErrors = (errors) => ({
   type: REGISTER_SET_ERRORS,
   payload: errors,
@@ -36,7 +33,6 @@ const registerSubmitFailure = (message) => ({
   payload: message,
 });
 
-// validazione lato Redux
 const validateRegisterForm = (form) => {
   const errors = {};
   const { email, username, fullName, password, confirmPassword } = form;

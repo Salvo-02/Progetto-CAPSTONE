@@ -1,4 +1,3 @@
-// src/components/Navbar.jsx
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -13,7 +12,7 @@ export default function Navbar() {
 
   const auth = useSelector((state) => state.auth);
   const user = auth?.user || null;
-  const isAuthenticated = !!auth?.token; // o auth.isAuthenticated, se preferisci
+  const isAuthenticated = !!auth?.token;
   const isAdmin = user?.role === "Admin";
 
   const handleLogoClick = () => {
@@ -22,7 +21,6 @@ export default function Navbar() {
   };
 
   const handleLogout = () => {
-    // logout vero: pulisce localStorage + authReducer
     dispatch(logout());
     setDdOpen(false);
     setMenuOpen(false);
@@ -34,23 +32,19 @@ export default function Navbar() {
   return (
     <header className="gx-nav">
       <div className="gx-nav__inner">
-        {/* Brand */}
         <button className="gx-nav__brand" type="button" onClick={handleLogoClick}>
           <div className="gx-nav__brandMark" />
           <img></img>
           <div className="gx-nav__brandText">GymX</div>
         </button>
 
-        {/* Burger (mobile) */}
         <button className="gx-nav__burger" type="button" onClick={() => setMenuOpen((v) => !v)}>
           <span />
           <span />
           <span />
         </button>
 
-        {/* Link */}
         <div className={`gx-nav__links ${menuOpen ? "is-open" : ""}`}>
-          {/* 👉 NON LOGGATO: solo Login + Register */}
           {!isAuthenticated && (
             <>
               <NavLink to="/login" className={({ isActive }) => (isActive ? `${linkBaseClass} active` : linkBaseClass)} onClick={() => setMenuOpen(false)}>
@@ -63,7 +57,6 @@ export default function Navbar() {
             </>
           )}
 
-          {/* 👉 LOGGATO: link app + eventualmente Admin */}
           {isAuthenticated && (
             <>
               <NavLink to="/" end className={({ isActive }) => (isActive ? `${linkBaseClass} active` : linkBaseClass)} onClick={() => setMenuOpen(false)}>
@@ -82,7 +75,6 @@ export default function Navbar() {
                 I miei workout
               </NavLink>
 
-              {/* Solo Admin → Utenti */}
               {isAdmin && (
                 <NavLink
                   to="/admin/users"
@@ -93,7 +85,6 @@ export default function Navbar() {
                 </NavLink>
               )}
 
-              {/* Dropdown utente */}
               {user && (
                 <div className="gx-dd">
                   <button type="button" className="gx-btn gx-btn--ghost" onClick={() => setDdOpen((v) => !v)}>

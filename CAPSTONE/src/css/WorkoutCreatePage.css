@@ -225,7 +225,6 @@
   font-weight: 850;
 }
 
-/* FLEX layout invece della grid */
 .cw__setsFlex {
   display: flex;
   flex-wrap: wrap;
@@ -244,7 +243,6 @@
   border: 1px solid rgba(255, 140, 0, 0.3);
 }
 
-/* responsive: quando lo schermo stringe, scali */
 @media (max-width: 1100px) {
   .cw__sets {
     grid-template-columns: repeat(4, minmax(160px, 1fr));
@@ -399,7 +397,7 @@
 
 .cw__setCard {
   min-width: 150px;
-  flex: 0 0 150px; /* ✅ base: 150 fissi */
+  flex: 0 0 150px;
   border-radius: 16px;
   padding: 14px;
   background: rgba(255, 255, 255, 0.05);
